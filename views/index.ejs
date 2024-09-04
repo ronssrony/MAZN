@@ -47,7 +47,8 @@
         <h1 class="text-xl self-start ">Login your account</h1>
      <form action="/user/login" method="post" class="self-start mt-5 w-full">
         <input name="email" type="email" autocomplete="off"  placeholder="Email" class="  block  p-2 w-full  mb-4 outline-none bg-transparent border-b border-black" required>
-        <input name="password" type="password" autocomplete="off"  placeholder="Password" class="  block p-2 w-full mb-4 outline-none bg-transparent border-b border-black" required>
+        <input name="password" type="password" autocomplete="off"  placeholder="Password" class="  block p-2 w-full mb-2 outline-none bg-transparent border-b border-black" required>
+       <div class=" flex px-5">  <a href="/auth/google" class="border border-black px-1"><i class="ri-google-line text-xl"></i></a></div>
         <input type="submit" value="Login" class="border border-black cursor-pointer active:border-none  text-black px-5 py-2 mt-5 "> <a class="needaccount ml-10 inline-block lg:hidden" href="">Need An Account?</a>
      </form>
     

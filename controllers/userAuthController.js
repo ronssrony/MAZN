@@ -122,3 +122,31 @@ module.exports.removeitem = async function(req ,res ){
       const referer = req.get('Referer'||'/')
      res.redirect(referer)
 }
+
+module.exports.socialprofiles = async function(email,password,picture,fullname){
+            
+           const user = await userModel.findOne({email});
+           
+           if(user){
+               const token = jwt.sign({email: user.email} , `${config.get("JWT_KEY")}`);  
+               user.token = token ;
+               return user 
+              } 
+           else {
+            console.log("user is creating in a sec")
+             bcrypt.genSalt(10,function(err,salt){
+                bcrypt.hash(salt,password , async function(err , hash){
+                    const user = await userModel.create({
+                           fullname , 
+                           email ,
+                           password:hash ,
+                           picture
+                    }).then((user)=> {
+                        const token = jwt.sign({email: user.email} , `${config.get("JWT_KEY")}`);
+                        user.token = token
+                        return user
+                        }); 
+                })
+             })
+           }
+}

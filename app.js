@@ -7,6 +7,8 @@ const ownerRoutes = require('./routes/ownerRoutes');
 const productRoutes = require('./routes/productRoutes'); 
 const checkRoutes = require('./routes/checkoutRoutes')
 const collectionRoutes = require("./routes/collectionRoutes")
+const authRoutes = require('./routes/authRoutes')
+const passport = require('./services/passportSetup')
 const cookieParser = require('cookie-parser'); 
 app.use(cookieParser()); 
 app.use(express.json()); 
@@ -19,6 +21,7 @@ app.use('/user' , userRoutes);
 app.use('/owner' , ownerRoutes); 
 app.use('/product' , productRoutes);
 app.use('/collection',collectionRoutes) 
+app.use('/auth',authRoutes)
 app.get('/',function(req,res){
     res.render('home') ;
 })
