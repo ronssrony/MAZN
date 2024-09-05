@@ -1,5 +1,8 @@
-const config = require('config') 
-const stripe = require('stripe')(config.get("STRIPE_PRIVATE_KEY"))
+
+const dotenv = require('dotenv')
+const config = require('config')
+dotenv.config() ;
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 const productModel = require('../models/product-model')
 
 

@@ -8,8 +8,16 @@ const productRoutes = require('./routes/productRoutes');
 const checkRoutes = require('./routes/checkoutRoutes')
 const collectionRoutes = require("./routes/collectionRoutes")
 const authRoutes = require('./routes/authRoutes')
+const appRoutes = require('./routes/appRoutes')
 const passport = require('./services/passportSetup')
 const cookieParser = require('cookie-parser'); 
+const session = require('express-session');
+app.use(session({
+  secret: 'bluecat', 
+  resave: false,
+  saveUninitialized: true
+}));
+
 app.use(cookieParser()); 
 app.use(express.json()); 
 app.use(express.urlencoded({extended:true})) ; 
@@ -22,6 +30,7 @@ app.use('/owner' , ownerRoutes);
 app.use('/product' , productRoutes);
 app.use('/collection',collectionRoutes) 
 app.use('/auth',authRoutes)
+app.use('/app',appRoutes)
 app.get('/',function(req,res){
     res.render('home') ;
 })

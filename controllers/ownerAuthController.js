@@ -2,6 +2,8 @@
  const bcrypt = require('bcrypt') ; 
  const jwt = require('jsonwebtoken')
  const config = require('config'); 
+ const dotenv = require('dotenv')
+ dotenv.config(); 
  const product = require('../controllers/productController')
 
  
@@ -23,7 +25,7 @@
                  }); 
             })
         })
-        const token = jwt.sign({email:email , id: user._id},config.get("JWT_KEY"))
+        const token = jwt.sign({email:email , id: user._id},process.env.JWT_KEY)
         res.status(201).cookie("ronss", token).redirect('/owner/dashboard') 
     }
 
@@ -38,7 +40,7 @@ module.exports.Login = async function(req,res){
     else {
         bcrypt.compare(password , user.password , function(req, result){
             if(result){
-                const token = jwt.sign({email:email} , config.get("JWT_KEY")); 
+                const token = jwt.sign({email:email} , process.env.JWT_KEY); 
                 res.status(200).cookie("ronss",token).redirect('/owner/dashboard'); 
             }
             else {

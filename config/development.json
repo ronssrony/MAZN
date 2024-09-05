@@ -2,6 +2,16 @@
     "MONGODB_URL": "mongodb+srv://ronssrony:ronssrony@scatch.ep7b3.mongodb.net/?retryWrites=true&w=majority&appName=scatch" ,
     "JWT_KEY": "FODSUFDOUVNASDKJFDSKWIOEE" , 
     "NODE_ENV": "development" , 
-    "STRIPE_PRIVATE_KEY": "sk_test_51NUyczFawRj8GWy4viBS9CupCoRJmnK86Wt2jYQawv7K5u0pqFKUS4DJK1tmfdBc7latJ9NV18wuFOBhXxHDe46Y00EtwRBjTu"
-  
+    "STRIPE_PRIVATE_KEY": "sk_test_51NUyczFawRj8GWy4viBS9CupCoRJmnK86Wt2jYQawv7K5u0pqFKUS4DJK1tmfdBc7latJ9NV18wuFOBhXxHDe46Y00EtwRBjTu" ,
+    "clientID" : "157670939303-kqp4prvhpjaads4r078l76j7ge2jbn94.apps.googleusercontent.com" ,
+    "clientSecret": "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" ,
+    "AppID": "888021416533044" ,
+    "Appsecret": "d9fbc06cbbe79bc6a5b033f0643e968d" , 
+    "consumerKey":"2Bb8hRtg78Kx0VQPiHCudg9VY", 
+    "consumerSecret":"ZWHbnqYejrbq9R16eSChB1fFIIII6q9ymbh3chCkizkcmEDuDe" ,
+    "TwitterID": "N25XQjAybndaZzh5VjlpYksyS0w6MTpjaQ" , 
+    "Twittersecret": "7z9xGaYI2oIqX8auMih6unJiBn98vxjPr7P3g-y_lFjUhFcAEI" , 
+    "TwitterbearerToken":"AAAAAAAAAAAAAAAAAAAAABLevgEAAAAAhUNZun%2BgVxsGhA49%2FcveEfgF5SI%3DQP7u3Rwd7Qob0Sdm6tf7d5DlGonwHfZppauUQVrYHvTs9JUW2B",
+    "TwitteraccessToken": "1831371088653389824-bxsZLflFmzzZSXICiCJpQcfMu2Rdg5", 
+    "TwittersecretToken":"LQiqrEuCt0U6lQk19qE75JjMsBng4WBduIGUvwIyMdO5m"
 }

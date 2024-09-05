@@ -1,12 +1,18 @@
-const passport = require('passport')
-const newUser = require('../controllers/userAuthController')
+const passport = require('passport'); 
+const FacebookStrategy = require('passport-facebook') ;
 const GoogleStrategy = require('passport-google-oauth20'); 
+const TwitterStrategy = require('passport-twitter')
+const config = require('config') ;
+const newUser = require('../controllers/userAuthController')
+const { callbackURL } = require('../controllers/authController');
+const dotenv = require("dotenv") ;
+dotenv.config() ;
 
 passport.use(new GoogleStrategy({
     //option for the google start
        callbackURL:"/auth/google/redirect" ,
-       clientID: "157670939303-kqp4prvhpjaads4r078l76j7ge2jbn94.apps.googleusercontent.com" , 
-       clientSecret: "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"
+       clientID:process.env.clientID , 
+       clientSecret:process.env.clientSecret
 } , async (accessToken ,refreshToken,profile,done)=>{
           
     
@@ -21,3 +27,41 @@ passport.use(new GoogleStrategy({
       
         }
 ))
+
+passport.use(new FacebookStrategy({
+      clientID:process.env.AppID ,
+      clientSecret:process.env.Appsecret ,
+      callbackURL:"/auth/facebook/redirect",
+      profileFields: ['id', 'displayName', 'photos', 'email', 'friends']
+}, async (accessToken , refreshToken , profile , done)=>{
+     
+     try{
+         const user = await newUser.socialprofiles(
+            profile.emails[0].value ,
+            profile.id , 
+            profile.photos[0].value, 
+            profile.displayName ); 
+
+            done(null,user)
+     }
+     catch(err){
+
+         done(null,err)
+     }
+
+}
+))
+
+passport.use(new TwitterStrategy({
+     consumerKey:process.env.consumerKey, 
+     consumerSecret:process.env.consumerSecret, 
+     callbackURL:"/auth/twitter/redirect"  , 
+     includeEmail: true 
+} , async (accessToken , refreshToken , profile , done )=>{
+    console.log(
+    profile ); 
+    
+    } 
+) )
+
+

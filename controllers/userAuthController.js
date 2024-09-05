@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken') ;
 const bcrypt = require('bcrypt') ; 
 const userModel = require('../models/user-model')
 const config = require('config')
+const dotenv = require('dotenv')
+dotenv.config() 
 const products = require('../controllers/productController')
 const {unique} = require('../utils/map');
 const { render } = require('ejs');
@@ -19,7 +21,7 @@ module.exports.SignUp= async function(req, res){
                 email ,
                 password: hash
               }).then(()=>{
-                let token = jwt.sign({email:email} , `${config.get("JWT_KEY")}`)
+                let token = jwt.sign({email:email} , `${process.env.JWT_KEY}`)
                 res.status(201).cookie("ronss",token).redirect('/')
               })
        })
@@ -36,7 +38,7 @@ module.exports.Login = async function(req, res){
     else{ 
           bcrypt.compare(password , user.password , function(req,result){
                if(result){
-                let token = jwt.sign({email:email} , `${config.get("JWT_KEY")}`)
+                let token = jwt.sign({email:email} , `${process.env.JWT_KEY}`)
         
                 res.status(200).cookie("ronss",token).redirect('/collection/man')
                }
@@ -61,7 +63,7 @@ module.exports.Logout = async function(req,res){
 module.exports.Shop = async function (req ,res){
    
      let allproducts = await products.AllProducts()
-     const useremail = jwt.verify(req.cookies.ronss , config.get("JWT_KEY")).email
+     const useremail = jwt.verify(req.cookies.ronss ,process.env.JWT_KEY).email
 
      try{     const user  = await userModel.findOne({email: useremail})
      
@@ -78,7 +80,7 @@ catch{
 
 module.exports.addTocart = async function(req, res){
     if(req.cookies.ronss === undefined) return res.redirect('/user/registration')  
-    const useremail = jwt.verify(req.cookies.ronss , config.get("JWT_KEY")).email
+    const useremail = jwt.verify(req.cookies.ronss , process.env.JWT_KEY).email
     const product = req.params.id
     const user  = await userModel.findOne({email: useremail});  
     user.cart.push(product); 
@@ -106,7 +108,7 @@ module.exports.Finduser = async function(req){
     
    
     if(req.cookies.ronss===undefined || req.cookies.ronss==='') return null ;
-    const email = jwt.verify(req.cookies.ronss , config.get("JWT_KEY")).email 
+    const email = jwt.verify(req.cookies.ronss , process.env.JWT_KEY).email 
    
     const user = await userModel.findOne({email:email})
     return user ;
@@ -128,7 +130,7 @@ module.exports.socialprofiles = async function(email,password,picture,fullname){
            const user = await userModel.findOne({email});
            
            if(user){
-               const token = jwt.sign({email: user.email} , `${config.get("JWT_KEY")}`);  
+               const token = jwt.sign({email: user.email} , `${process.env.JWT_KEY}`);  
                user.token = token ;
                return user 
               } 
@@ -142,7 +144,7 @@ module.exports.socialprofiles = async function(email,password,picture,fullname){
                            password:hash ,
                            picture
                     }).then((user)=> {
-                        const token = jwt.sign({email: user.email} , `${config.get("JWT_KEY")}`);
+                        const token = jwt.sign({email: user.email} , `${process.env.JWT_KEY}`);
                         user.token = token
                         return user
                         }); 
