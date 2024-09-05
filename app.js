@@ -12,12 +12,14 @@ const appRoutes = require('./routes/appRoutes')
 const passport = require('./services/passportSetup')
 const cookieParser = require('cookie-parser'); 
 const session = require('express-session');
+const passport = require('passport')
 app.use(session({
   secret: 'bluecat', 
   resave: false,
   saveUninitialized: true
 }));
-
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(cookieParser()); 
 app.use(express.json()); 
 app.use(express.urlencoded({extended:true})) ; 
