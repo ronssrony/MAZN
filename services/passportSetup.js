@@ -10,7 +10,7 @@ dotenv.config() ;
 
 passport.use(new GoogleStrategy({
     //option for the google start
-       callbackURL:"/auth/google/redirect" ,
+       callbackURL:"https://mazn.onrender.com/auth/google/redirect",
        clientID:process.env.clientID , 
        clientSecret:process.env.clientSecret
 } , async (accessToken ,refreshToken,profile,done)=>{
@@ -31,7 +31,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
       clientID:process.env.AppID ,
       clientSecret:process.env.Appsecret ,
-      callbackURL:"/auth/facebook/redirect",
+      callbackURL: "https://mazn.onrender.com/auth/facebook/redirect",
       profileFields: ['id', 'displayName', 'photos', 'email', 'friends']
 }, async (accessToken , refreshToken , profile , done)=>{
      
@@ -55,7 +55,7 @@ passport.use(new FacebookStrategy({
 passport.use(new TwitterStrategy({
      consumerKey:process.env.consumerKey, 
      consumerSecret:process.env.consumerSecret, 
-     callbackURL:"/auth/twitter/redirect"  , 
+     callbackURL: "https://mazn.onrender.com/auth/twitter/redirect", 
      includeEmail: true 
 } , async (accessToken , refreshToken , profile , done )=>{
     console.log(
