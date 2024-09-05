@@ -41,7 +41,8 @@ app.use('/collection',collectionRoutes)
 app.use('/auth',authRoutes)
 app.use('/app',appRoutes)
 app.get('/',Homepage)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, function() {
+    console.log(`The server is running on port ${PORT}`);
+});
 
-app.listen(3000,function(){
-    console.log('The server is running on port 3000')
-})
