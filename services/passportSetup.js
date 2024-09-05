@@ -1,3 +1,4 @@
+process.env.SUPPRESS_NO_CONFIG_WARNING = 'true';
 const passport = require('passport'); 
 const FacebookStrategy = require('passport-facebook') ;
 const GoogleStrategy = require('passport-google-oauth20'); 
