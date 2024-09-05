@@ -11,7 +11,7 @@ router.get('/shop',isAuthorizedUser ,Shop)
 
 router.get('/logout', Logout)
 
-router.get('/cart/:id' , addTocart )
+router.get('/cart/:id' ,isAuthorizedUser, addTocart )
 
 router.get('/cart' ,isAuthorizedUser, Cart); 
 
