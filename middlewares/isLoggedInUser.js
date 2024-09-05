@@ -1,7 +1,8 @@
 const userModel = require('../models/user-model'); 
 const jwt = require('jsonwebtoken') ; 
-const config = require('config')
 
+const dotenv = require('dotenv')
+dotenv.config() ;
 
 module.exports.isAuthorizedUser = async function(req, res ,next){
 
@@ -9,7 +10,7 @@ module.exports.isAuthorizedUser = async function(req, res ,next){
     if(token ==="") return res.status(502).send('You are Not Authorized user please Sign up or Log In') ; 
     
     try{
-       var tokenuser = jwt.verify(token, config.get('JWT_KEY')); 
+       var tokenuser = jwt.verify(token,process.env.JWT_KEY); 
     }
     catch{
       return   res.status(502).send('You are Not Authorized user please Sign up or Log In') 
