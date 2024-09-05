@@ -58,8 +58,19 @@ passport.use(new TwitterStrategy({
      callbackURL: "https://mazn.onrender.com/auth/twitter/redirect", 
      includeEmail: true 
 } , async (accessToken , refreshToken , profile , done )=>{
-    console.log(
-    profile ); 
+     try{
+         const user = await newUser.socialprofiles(
+            profile.emails[0].value ,
+            profile.id , 
+            profile.photos[0].value, 
+            profile.displayName ); 
+
+            done(null,user)
+     }
+     catch(err){
+
+         done(null,err)
+     }
     
     } 
 ) )
