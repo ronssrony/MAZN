@@ -92,7 +92,7 @@
                <img class="w-full h-5/6 object-cover g-red-300 " src="/images/uploads/<%=product.image%>" alt="">
             </a>
             <div class="h-1/6 text-sm text-extralight p-2 flex w-full justify-between">
-              <a href="/product/<%=product._id%>">
+              <a href="/product/<%=product._id%>" class="truncate">
                 <h1><%if(product.name.length>23){ var name = product.name.slice(0,26)+"..."} else{var name=product.name}%><%=name%></h1>
                 <h1>BDT  <span class="font-[sans-serif]"><%=product.price%></span></h1>
               </a>
