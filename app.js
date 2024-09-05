@@ -1,3 +1,4 @@
+process.env.SUPPRESS_NO_CONFIG_WARNING = 'true';
 const express =require('express') ; 
 const app = express() ; 
 const path = require('path') ; 
@@ -13,6 +14,7 @@ const passports = require('./services/passportSetup')
 const cookieParser = require('cookie-parser'); 
 const session = require('express-session');
 const passport = require('passport')
+const {Homepage} = require('./routes/home')
 app.use(session({
   secret: 'bluecat', 
   resave: false,
@@ -33,9 +35,7 @@ app.use('/product' , productRoutes);
 app.use('/collection',collectionRoutes) 
 app.use('/auth',authRoutes)
 app.use('/app',appRoutes)
-app.get('/',function(req,res){
-    res.render('home') ;
-})
+app.get('/',Homepage)
 
 app.listen(3000,function(){
     console.log('The server is running on port 3000')
