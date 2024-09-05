@@ -20,7 +20,11 @@
                 <a href="/collection/man">Man</a>
                 <a href="/collection/kid">Kids</a>
                 <div class=" ml-10  text-white  flex gap-2 min-w-fit justify-around  relative lg:hidden  "> 
-                  <a class="" href="/user/registration">Log In</a>
+                 <%if(user){%>
+            <a class="" href="/user/logout">Log Out</a>
+            <%}else {%>
+              <a class="" href="/user/registration">Log In</a>
+              <%}%>
                 <a href="" class="">News</a>
                 <a href="" class="">Help</a>
               </div>
@@ -32,7 +36,11 @@
             <input type="search" size="45" autocomplete="off" name="search" class="absolute max-sm:w-full  p-1 max-sm:border max-sm:border-white outline-none max-sm:bg-transparent"> <label for="search" class="right-0 absolute p-1 opacity-60 font-light max-sm:text-white">SEARCH</label>
           </form>
         <div class="lg:ml-10 md:ml-10 max-sm:w-60 max-md:w-72 w-56  h-20 text-white  py-10 px-2 flex justify-around  relative max-lg:hidden"> 
-          <a href="/user/registration">Log In</a>
+          <%if(user){%>
+            <a class="" href="/user/logout">Log Out</a>
+            <%}else {%>
+              <a class="" href="/user/registration">Log In</a>
+              <%}%>
           <a href="">News</a>
           <a href="">Help</a>
         </div>
