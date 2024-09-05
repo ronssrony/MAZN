@@ -10,7 +10,7 @@ dotenv.config() ;
 
 passport.use(new GoogleStrategy({
     //option for the google start
-       callbackURL:"/auth/google/redirect" ,
+       callbackURL:"https://mazn.onrender.com/auth/google/redirect",
        clientID:process.env.clientID , 
        clientSecret:process.env.clientSecret
 } , async (accessToken ,refreshToken,profile,done)=>{
