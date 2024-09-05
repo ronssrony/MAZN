@@ -53,6 +53,7 @@
       
  
           <div class="product w-full h-96   border-black">
+            <h1 class="productid hidden"><%=product._id%></h1>
            <a href="/product/<%=product._id%>" class="">
               <img class="w-full h-5/6 object-cover g-red-300 " src="/images/uploads/<%=product.image%>" alt="">
            </a>
@@ -78,10 +79,10 @@
               <h1 class="">Platform Fee</h1>
          </div>
          <div class="flex flex-col max-sm:20 w-36 text-lg">
-          <h1 class=""><span class="text-sm">&#2547</span> <%=product.price%> </h1>
-          <h1 class=""><span class="text-sm">&#2547</span> <%=product.discount%> </h1>
-          <h1 class=""><span class="text-sm">&#2547</span> <%= Math.ceil(product.price *.001)%> </h1>
-          <h1 class=""><span class="text-sm">&#2547</span> <%=Math.ceil(product.price *.0001)%> </h1>
+          <h1 class=""><span class="text-sm">&#2547 </span> <span class="ttlprice"><%=product.price%></span> </h1>
+          <h1 class=""><span class="text-sm">&#2547 </span> <span class="ttldiscount"><%=product.discount%></span></h1>
+          <h1 class=""><span class="text-sm">&#2547 </span><span class="ttlshipping"><%= Math.ceil( product.price*.001)%></span> </h1>
+          <h1 class=""><span class="text-sm">&#2547 </span><span class="ttlplatform"><%=Math.ceil(product.price*.0001)%></span> </h1>
          </div>
         </div>
 
@@ -89,9 +90,9 @@
 
        <div class="text-2xl flex  mb-5 tracking-tighter">
           <h1 class="w-56 max-sm:w-40">Total Fee</h1>
-          <h1 class="ml-2"><span class="text-lg">&#2547 </span><%= product.price + Math.ceil(product.price *.0001) + Math.ceil(product.price *.001) - product.discount%></h1>
+          <h1 class="ml-2"><span class="text-lg ">&#2547 </span><span class="ttlfee"><%= product.price + Math.ceil(product.price *.0001) + Math.ceil(product.price *.001) - product.discount%></span></h1>
        </div>
-       <a href="" class="py-2 px-5 bg-black text-white text-lg rounded text-center">Place Order</a>
+       <a href="" class=" checkout py-2 px-5 bg-black text-white text-lg rounded text-center">Place Order</a>
 
       </div>
 
@@ -105,6 +106,7 @@
         
         <div class="products    flex lg:flex-col max-sm:flex-wrap   self-start   h-72   border-t border-black">
           <%interest.forEach((product)=>{%>
+           
             <div class="preffer min-w-56   relative   max-sm:min-w-44 max-sm:w-1/2 h-full  border-b border-r border-l border-black">
              <a href="/product/<%=product._id%>" class="">
                 <img class="w-full h-5/6 object-cover  " src="/images/uploads/<%=product.image%>" alt="">
