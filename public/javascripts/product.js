@@ -39,7 +39,37 @@
            
      } )
 
+   
+document.querySelector('.checkout').addEventListener('click', function(e){
+    e.preventDefault()
+
+const products_id = document.querySelector('.productid') ;
+const quantity = document.querySelector('.volume .value') 
+const newArray = new Array(); 
+newArray.push({id:products_id.innerHTML , quantity:quantity.innerHTML }) ;
+
+
+    fetch('/checkout/stripe', {
+       method: "POST" , 
+       headers:{
+        'Content-Type': "application/json"
+       },
+       body: JSON.stringify({
+           items: newArray 
+       })
+    }).then(res =>{
+       console.log(res.status)
+       if(res.ok) return res.json() ;
+       return res.json().then(error => {
+       throw new Error(error.message)});
+           
+    }).then( ({url}) => {
      
-      
-     
-      
+    window.location = url
+})
+   
+})
+
+
+
+
