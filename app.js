@@ -18,13 +18,13 @@ const {Homepage} = require('./routes/home')
 const flash = require('connect-flash'); 
 const {connectflash} = require('./middlewares/connectflash'); 
 
-app.use(flash()) ;
-app.use(connectflash)
 app.use(session({
   secret: 'bluecat', 
   resave: false,
   saveUninitialized: true
 }));
+app.use(flash()) ;
+app.use(connectflash)
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser()); 
