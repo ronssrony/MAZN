@@ -12,6 +12,14 @@
           <a href="text-black" class="">Help</a>
         </div>
       </div>
+ <div class="flashmsg bg-black text-white max-w-96">
+        <%if(success_msg){%>
+          <h1 class=" success"><%=success_msg%></h1>
+        <%}%>
+        <%if(error_msg){%>
+        <h1 class="error"><%=error_msg%></h1>
+        <%}%>
+      </div>
   </div>
 
   <div class="xl:flex lg:flex-col md:flex-col max-md:flex-col xl:flex-row  ">
