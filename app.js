@@ -18,7 +18,9 @@ const passport = require('passport')
 const {Homepage} = require('./routes/home')
 const flash = require('connect-flash'); 
 const {connectflash} = require('./middlewares/connectflash'); 
+const cors = require('cors') ;
 
+app.use(cors()) ;
 app.use(session({
   secret: 'bluecat', 
   resave: false,
