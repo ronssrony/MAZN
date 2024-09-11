@@ -10,6 +10,7 @@ const checkRoutes = require('./routes/checkoutRoutes')
 const collectionRoutes = require("./routes/collectionRoutes")
 const authRoutes = require('./routes/authRoutes')
 const appRoutes = require('./routes/appRoutes')
+const apiRoutes = require("./routes/apiRoutes")
 const passports = require('./services/passportSetup')
 const cookieParser = require('cookie-parser'); 
 const session = require('express-session');
